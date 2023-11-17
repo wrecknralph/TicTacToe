@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var btnString7 = "7"
     private var btnString8 = "8"
     private var btnString9 = "9"
+    private var totalClicked = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +64,9 @@ class MainActivity : AppCompatActivity() {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
                 }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
+                }
                 btn1.isClickable = false
             }
         }
@@ -75,6 +79,9 @@ class MainActivity : AppCompatActivity() {
                 if (checkWinner()) {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
+                }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
                 }
                 btn2.isClickable = false
             }
@@ -89,6 +96,9 @@ class MainActivity : AppCompatActivity() {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
                 }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
+                }
                 btn3.isClickable = false
             }
         }
@@ -101,6 +111,9 @@ class MainActivity : AppCompatActivity() {
                 if (checkWinner()) {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
+                }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
                 }
                 btn4.isClickable = false
             }
@@ -115,6 +128,9 @@ class MainActivity : AppCompatActivity() {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
                 }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
+                }
                 btn5.isClickable = false
             }
         }
@@ -127,6 +143,9 @@ class MainActivity : AppCompatActivity() {
                 if (checkWinner()) {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
+                }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
                 }
                 btn6.isClickable = false
             }
@@ -141,6 +160,9 @@ class MainActivity : AppCompatActivity() {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
                 }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
+                }
                 btn7.isClickable = false
             }
         }
@@ -154,6 +176,9 @@ class MainActivity : AppCompatActivity() {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
                 }
+                else if (totalClicked == 9) {
+                        textView.text = "The game was a Tie!"
+                }
                 btn8.isClickable = false
             }
         }
@@ -166,6 +191,9 @@ class MainActivity : AppCompatActivity() {
                 if (checkWinner()) {
                     lockBoard(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
                     textView.text = winnerIs
+                }
+                else if (totalClicked == 9) {
+                    textView.text = "The game was a Tie!"
                 }
                 btn9.isClickable = false
             }
@@ -208,7 +236,7 @@ class MainActivity : AppCompatActivity() {
         btn9.text = ""
         btn9.isClickable = true
         playersTurn = "Player $player1's turn"
-        textView.setText(playersTurn)
+        textView.text = playersTurn
         btnString1 = "1"
         btnString2 = "2"
         btnString3 = "3"
@@ -218,9 +246,10 @@ class MainActivity : AppCompatActivity() {
         btnString7 = "7"
         btnString8 = "8"
         btnString9 = "9"
+        totalClicked = 0
     }
 
-    fun lockBoard(btn1 : Button, btn2: Button, btn3 : Button, btn4: Button, btn5: Button,
+    private fun lockBoard(btn1 : Button, btn2: Button, btn3 : Button, btn4: Button, btn5: Button,
                   btn6: Button, btn7: Button, btn8: Button, btn9: Button) {
         btn1.isClickable = false
         btn2.isClickable = false
@@ -234,7 +263,8 @@ class MainActivity : AppCompatActivity() {
         btn9.isClickable = false
     }
 
-    fun setButton(): String {
+    private fun setButton(): String {
+        totalClicked++
         if (playersTurn == "Player X's turn") {
             playersTurn = "Player $player2's turn"
             winnerIs = "Winner $player1!!!!"
@@ -246,7 +276,7 @@ class MainActivity : AppCompatActivity() {
             return player2
         }
     }
-    fun checkWinner(): Boolean {
+    private fun checkWinner(): Boolean {
 
         //check 1,2,3
         if ((btnString1 == btnString2) && (btnString1 == btnString3)) {
@@ -276,7 +306,6 @@ class MainActivity : AppCompatActivity() {
         if ((btnString7 == btnString8) && (btnString7 == btnString9)) {
             return true
         }
-
         return false
     }
 
